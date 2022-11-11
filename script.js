@@ -58,6 +58,18 @@ const LinkedList = () => {
     prevNode.next = null
   }
 
+  // Checking if a node in the linked list contains the passed value
+  const contains = (value) => {
+    let current = head
+    while (current.next) {
+      if (current.data == value) {
+        return true
+      }
+      current = current.next;
+    }
+    return false
+  }
+
   // Converting linked list to string and returning string
   const toString = () => {
     let string = ''
@@ -75,7 +87,7 @@ const LinkedList = () => {
     return `${string}null`;
   }
 
-  return {append, prepend, at, pop, toString, get head() { return head }, get size() { return size }, get tail() {return tail}}
+  return {append, prepend, at, pop, contains, toString, get head() { return head }, get size() { return size }, get tail() {return tail}}
 }
 
 const newLinkedList = LinkedList()
@@ -84,5 +96,4 @@ newLinkedList.append('John')
 newLinkedList.append('Tony')
 newLinkedList.append('Benji')
 newLinkedList.prepend('Taco')
-newLinkedList.pop()
-console.log(newLinkedList.toString())
+console.log(newLinkedList.contains('Tony'))
