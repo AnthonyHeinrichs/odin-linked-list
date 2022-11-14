@@ -76,6 +76,7 @@ const LinkedList = () => {
     return false;
   };
 
+  // Finding a node's index number by the node's value 
   const find = (value) => {
     let current = head;
     let index = 0;
@@ -111,6 +112,7 @@ const LinkedList = () => {
     return `${string}null`;
   };
 
+  // Adding a new node to the list at a specific index number
   const insertAt = (value, index) => {
     if (index == 0) {
       prepend(value);
@@ -122,6 +124,7 @@ const LinkedList = () => {
     }
   };
 
+  // Removing a node from the list at a specific index number
   const removeAt = (index) => {
     if (index == size - 1) {
       pop();
@@ -134,6 +137,7 @@ const LinkedList = () => {
     }
   };
 
+  // Returning all my methods
   return {
     append,
     prepend,
