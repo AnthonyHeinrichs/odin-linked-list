@@ -56,6 +56,7 @@ const LinkedList = () => {
       current = current.next;
     }
     prevNode.next = null;
+    size-- 
   };
 
   // Checking if a node in the linked list contains the passed value
@@ -110,6 +111,29 @@ const LinkedList = () => {
     return `${string}null`;
   };
 
+  const insertAt = (value, index) => {
+    if (index == 0) {
+      prepend(value)
+    } else {
+      const nodeBefore = at(index - 1)
+      const newNode = Node(value, nodeBefore.next)
+      nodeBefore.next = newNode
+      size++
+    }
+  } 
+
+  const removeAt = (index) => {
+    if (index == size - 1) {
+      pop()
+    } else if (index === 0) {
+      head = head.next
+    } else {
+      const nodeBefore = at(index - 1)
+      nodeBefore.next = nodeBefore.next.next
+      size--
+    }
+  }
+
   return {
     append,
     prepend,
@@ -118,6 +142,8 @@ const LinkedList = () => {
     contains,
     find,
     toString,
+    insertAt,
+    removeAt,
     get head() {
       return head;
     },
@@ -133,7 +159,11 @@ const LinkedList = () => {
 const newLinkedList = LinkedList();
 
 newLinkedList.append("John");
-newLinkedList.append("Tony");
+newLinkedList.append("Sarah");
 newLinkedList.append("Benji");
 newLinkedList.prepend("Taco");
 console.log(newLinkedList.find("Taco"));
+newLinkedList.insertAt('Ruth', 0)
+console.log(newLinkedList.toString())
+newLinkedList.removeAt(2)
+console.log(newLinkedList.toString())
